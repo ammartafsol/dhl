@@ -63,7 +63,8 @@ export default function DesktopHeader({ isScroll, logout }) {
                 </div>
                 <div className={classes.userInfo}>
                   <p className={classes.name}>
-                    {user?.fullName || "Brandon Lemke"}
+                    {/* {user?.fullName || "Admin"} */}
+                    Shipping Partner
                   </p>
                   <p className={classes.email}>
                     {user?.email || "Brandon_Lemke@yahoo.com"}
