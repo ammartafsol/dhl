@@ -1,0 +1,83 @@
+.labelText {
+  opacity: 0.65;
+  text-wrap: nowrap;
+  margin-bottom: 16px !important;
+  color: var(--black-color);
+  text-transform: capitalize;
+}
+
+.inputDiv {
+  position: relative;
+  display: flex;
+  border-radius: 10px;
+}
+
+.comboboxInput {
+  background: var(--white-color);
+  outline: none !important;
+  font-family: var(--inter);
+  color: var(--black-color);
+  font-weight: 300;
+  border: 1px solid var(--gray-100);
+  letter-spacing: 1.4px;
+  padding: 20px 13px;
+  width: 100%;
+  border-radius: 2px;
+  height: 40px;
+  font-size: 14px !important;
+}
+.comboboxInput:focus {
+  border-color: var(--input-border-active);
+  /* border: 1px solid var(--gray-100); */
+}
+.comboboxInput::placeholder {
+  text-transform: capitalize;
+  font-size: 12px;
+  font-family: var(--inter);
+  color: var(--placeholder-color);
+}
+.leftIcon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  bottom: 45%;
+  transform: translateY(-50%);
+  height: max-content;
+}
+
+.comboBoxList {
+  position: absolute;
+  top: 100%;
+  z-index: 8;
+  width: 100%;
+  color: var(--black-color);
+  border-radius: 6px;
+  background: #ebf2ff;
+  overflow: hidden;
+  margin-top: 10px;
+  font-size: 14px;
+  font-family: var(--inter);
+}
+.comboBoxList li {
+  padding: 5px 15px;
+}
+.comboBoxList li:hover,
+.comboBoxList li[data-reach-combobox-option][aria-selected="true"] {
+  background: rgba(255, 251, 244, 0.6);
+}
+.rightIconBox {
+  right: 15px;
+  top: 8px;
+  position: absolute;
+}
+
+@media screen and (max-width: 1200px) {
+  .labelText {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .labelText {
+    margin-bottom: 5px !important;
+  }
+}

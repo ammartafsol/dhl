@@ -1,0 +1,41 @@
+:root {
+  --primary-color:#B9E4FF;
+  --primary-color-25:rgba(237, 249, 255, 0.50);
+  --primary-color-100:#117FFF;
+  --primary-color-500:#289DFF;
+  --secondary-color:#F28745;
+  --secondary-color-50:#FEF6EE;
+  --secondary-color-100:#EF6923;
+  --secondary-color-600:#E04E16;
+  --secondary-color-400:#BA3914;
+  --secondary-color-950:#40120A;
+  --tertiary-color: #942F18;
+  --gray-color: #b6b6b6;
+  --light-gray: #e5e7eb;
+  --gray-50: #F6F6F6;
+  --gray-100: #E4E7E9;
+  --gray-200: #E7E7E7;
+  --gray-400: #888;
+  --gray-500: #B0B0B0;
+  --gray-600: #D1D5DB;
+  --gray-650: #6B7280;
+  --gray-700: #4F4F4F;
+  --gray-800: #9CA3AF;
+  --Gray-900:#191C1F;
+  --light-gray-100: #f3f4f6;
+  --white-color: #fff;
+  --black-color: #000;
+  --Grey-950:#0B0B0B;
+  --Grey-400:#888;
+  --Gray-500:#77878F;
+  --Gray-700:#475156;
+  --Gray-900:#18181B;
+  --Light-Gray-3:#E5E9EB;
+  --Mine-Shaft-800:#454545;
+  --Grey-900:#3D3D3D;
+  --Black-900:#4D4D4D;
+  --Black-500:#949494;
+  --success-color:#4DAA9F;
+  --pending-color:rgb(98, 98, 61);
+}
+

@@ -1,0 +1,38 @@
+.otpVerification {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.otpVerification h5 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.otpVerification p {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.inputBoxInput {
+  margin-bottom: 20px;
+}
+
+.btn {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.resendText {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.resendLink {
+  color: var(--primary-color);
+  cursor: pointer;
+  text-decoration: underline;
+}

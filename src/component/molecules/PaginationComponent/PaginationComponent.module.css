@@ -1,0 +1,36 @@
+.mainContainer {
+  margin-block: 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.iconBox {
+  border-radius: 5px;
+  border: 1px solid #e5e9eb;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+.text {
+  color: var(--Woodsmoke-500, #6d6d6d);
+  font-family: var(--inter);
+  font-size: 14px;
+  font-weight: 400;
+}
+/* .iconImageDiv {
+  width: 32px;
+  height: 32px;
+  position: relative;
+} */
+.iconImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 6px;
+}

@@ -1,0 +1,16 @@
+.faqForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.buttonGroup button {
+  width: max-content;
+}

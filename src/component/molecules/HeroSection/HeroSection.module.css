@@ -1,0 +1,76 @@
+.heroLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.heroLeft .tap2Image {
+  height: 130px !important;
+  width: 113px !important;
+  position: relative !important;
+  object-fit: contain;
+}
+
+.heroLeft h1 {
+  color: var(--deep-ocean-blue);
+  font-size: 62px;
+  font-weight: 700;
+}
+
+.heroLeft span {
+  background: linear-gradient(
+    225deg,
+    var(--reddish-orange) 0%,
+    var(--yellow-color) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.heroLeft p {
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  opacity: 0.6;
+}
+.storeImages {
+  display: flex;
+  gap: 16px;
+}
+
+.storeImage,
+.appImage {
+  position: relative !important;
+  object-fit: contain;
+  height: 40px !important;
+  width: 135px !important;
+}
+
+.heroRightDiv {
+  border-radius: 33px;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.7) 100%
+    ),
+    #97b2dd;
+  width: 543px;
+  height: 684px;
+  margin-inline: auto 0;
+}
+
+.rightImg {
+  width: 450px;
+  height: 710px;
+  margin: auto;
+}
+
+.heroRightDiv img {
+  position: relative !important;
+  object-fit: contain;
+}
+.navigate {
+  padding-block: 70px;
+}

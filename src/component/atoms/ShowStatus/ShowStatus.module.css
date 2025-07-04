@@ -1,0 +1,31 @@
+.activeLight {
+  color: var(--success-color);
+}
+
+.pendingLight {
+  color: var(--pending-color);
+}
+
+.rejectedLight{
+  color: var(--secondary-color-100);
+}
+
+.status{
+  padding: 6px 0px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  width: fit-content;
+}
+
+
+.circle {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  

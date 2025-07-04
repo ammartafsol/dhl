@@ -1,0 +1,122 @@
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 900; /* Black */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-black-58646a6b80d5a.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 800; /* Heavy */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-heavy-586470160b9e5.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 700; /* Bold */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-bold-58646a511e3d9.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 600; /* Semibold */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-semibold-58646eddcae92.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 500; /* Medium */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-medium-58646be638f96.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 400; /* Regular */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-semibold-58646eddcae92.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 300; /* Light */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-light-58646b33e0551.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 200; /* Thin */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-thin-58646e9b26e8b.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "SF UI Display";
+  font-weight: 100; /* Ultralight */
+  font-style: normal;
+  src: url("/fonts/sf-ui-display-ultralight-58646b19bf205.otf")
+    format("opentype");
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+.loading {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.maxLine1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1; /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.maxLine2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.maxLine3 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.line {
+  color: var(--gray-700);
+}
+
+.actionLink {
+  color: var(--secondary-color-400);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.cursorPointer {
+  cursor: pointer;
+}
+

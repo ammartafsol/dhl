@@ -1,0 +1,100 @@
+.footerMain {
+  background: url("/Images/app-images/PatternLight.png");
+  padding-top: 80px;
+  text-align: center;
+}
+
+.footerLogo {
+  width: 153px;
+  height: 45px;
+  margin: auto;
+}
+
+.footerLogo img {
+  position: relative !important;
+  object-fit: contain;
+}
+
+.links {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  align-items: center;
+  padding-block: 25px 45px;
+}
+.links a {
+  color: var(--black-color);
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+}
+
+.footerBottom {
+  padding-block: 39px;
+  border-top: 1px solid var(--field-border-color);
+}
+
+.footerBottom p {
+  color: var(--black-color);
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 30px;
+  opacity: 0.5;
+}
+
+@media (max-width: 991px) {
+  .links a {
+    font-size: 18px;
+  }
+  .footerMain {
+    padding-top: 40px;
+  }
+  .footerBottom {
+    padding-block: 25px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footerMain {
+    padding-top: 40px;
+    padding-inline: 20px;
+  }
+  .footerBottom {
+    padding-block: 25px;
+  }
+  .links {
+    row-gap: 20px;
+    column-gap: 30px;
+    flex-wrap: wrap;
+  }
+  .footerBottom p {
+    font-size: 16px;
+    line-height: 25px;
+  }
+  .links {
+    row-gap: 15px;
+    column-gap: 25px;
+    flex-wrap: wrap;
+    padding-block: 25px;
+  }
+  .footerLogo {
+    width: 120px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 575px) {
+  .links a {
+    font-size: 16px;
+  }
+  .links {
+    row-gap: 10px;
+    column-gap: 20px;
+    flex-wrap: wrap;
+    padding-block: 25px;
+  }
+}

@@ -1,0 +1,55 @@
+.modalContent {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  border-radius: 10px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup :global(input),
+.inputGroup :global(textarea) {
+  border-radius: 5px !important;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid var(--Grey-200);
+}
+
+.btn {
+  min-width: 120px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.cancelBtn {
+  background: white;
+  border: 1px solid var(--Grey-300);
+  color: var(--Grey-700);
+}
+
+
+.confirmBtn {
+  background: var(--secondary-color-100);
+  color: white;
+  border: none;
+}
+
+

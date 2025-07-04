@@ -1,0 +1,49 @@
+.tagForm {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.statusContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.statusLabel {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.buttonGroup button {
+  width: max-content;
+  min-width: 100px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tagForm {
+    gap: 16px;
+  }
+  
+  .buttonGroup {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+  
+  .buttonGroup button {
+    width: 100%;
+  }
+} 

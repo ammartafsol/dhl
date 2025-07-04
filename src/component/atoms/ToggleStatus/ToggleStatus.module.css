@@ -1,0 +1,56 @@
+.toggleWrapper {
+    width: 28px;
+    height: 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3px;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+  
+  .statusMain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .active {
+    background-color: var(--primary-color-500); /* Green */
+  }
+  
+  .inactive {
+    background-color: #ccc; /* Gray */
+  }
+  
+  .toggleThumb {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Position thumb */
+  .active .toggleThumb {
+    transform: translateX(12px);
+    background-color: #ffffff; /* White when active */
+  }
+  
+  .inactive .toggleThumb {
+    transform: translateX(0px);
+    background-color: var(--primary-color-500); /* Default color when inactive */
+  }
+  
+  .label {
+    margin-right: 5px;
+    color: var(--black-color);
+    font-weight: 500;
+    z-index: 1;
+    font-size: 14px;
+  }
+  

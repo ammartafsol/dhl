@@ -1,0 +1,79 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0px;
+  background: var(--white-color);
+  height: 44px;
+  background: transparent !important;
+  min-width:110px;
+}
+.label {
+  color: var(--text-color);
+  font-family: var(--inter);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: -0.14px;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+  
+}
+
+.errorText {
+  color: red;
+}
+
+.disabled {
+  color: var(--disabled-label-clr);
+}
+
+/* On Hover */
+.dropdown:hover {
+  border: 1px solid black !important;
+}
+
+/* on Focus */
+.dropdown:focus {
+  border: 1px solid black;
+}
+
+/* On Active */
+.dropdown:active {
+  border: 1px solid black;
+}
+
+/* On Disabled */
+.dropdown:disabled {
+  background-color: #f6f6f6;
+  color: #b5b5b5;
+  border: 1px solid #e5e5e5;
+}
+
+.noBorder {
+  border: 0px solid #e5e5e5;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+
+/*  React Select */
+.leftIconBox {
+  position: absolute;
+  left: 20px;
+  top: 55%;
+  bottom: 45%;
+  transform: translateY(-50%);
+  height: max-content;
+}
+
+.dropdownContainer {
+  position: relative;
+  /* border: 1px solid var(--gray-100); */
+  border-radius: 2px;
+margin-bottom: 0px !important;
+background-color: transparent !important;
+}

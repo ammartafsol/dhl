@@ -1,0 +1,177 @@
+.borderWrapper {
+  padding: 0 !important;
+}
+
+.line {
+  color: var(--gray-100);
+  stroke-width: 1px;
+  width: 100%;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.firstSection {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  align-items: center;
+}
+
+.firstSection button {
+  width: fit-content;
+}
+
+.firstSection button svg {
+  margin-right: 10px;
+}
+
+.profileDiv {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.imageDiv {
+  position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.textDivProfile {
+  display: flex;
+  flex-direction: column;
+}
+
+.nameDiv {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.name {
+  color: var(--Mine-Shaft-800);
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.location {
+  color: var(--main-gray-color);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.active {
+  color: var(--success-color);
+}
+
+.inactive {
+  color: var(--secondary-color);
+}
+
+.statusDiv {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 14px;
+}
+
+.optionsDiv {
+  display: flex;
+  width: 33px;
+  height: 33px;
+  padding: 0px 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--primary-color);
+  background: var(--gray-50);
+}
+
+.contactDiv {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.iconValueDiv {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.keyValueDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.key {
+  color: var(--dark-gray);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.value {
+  color: var(--main-gray-color);
+  font-size: 14px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.marginBottom {
+  margin-bottom: 24px;
+}
+
+.subHeading {
+  padding: 16px 0 16px 24px;
+  color: var(--gray-400);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.form {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.Inputs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.btn {
+  max-width: 150px;
+  margin-top: 16px;
+}
+
+.uploadImageContainerClass {
+  margin: 0 auto;
+  margin-bottom: 32px;
+}
+
+.uploadImageBox {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+
+.uploadImage {
+  border-radius: 50%;
+}
+
+.mainParent {
+  padding-bottom: 20px;
+}

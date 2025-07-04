@@ -1,0 +1,58 @@
+.TopHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  padding-bottom: 20px;
+}
+.TopHeader h4 {
+  color: var(--black-color);
+  font-size: 44px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 64px;
+  letter-spacing: -0.88px;
+}
+
+.pageMenu {
+  display: flex;
+  align-items: center;
+  gap: 35px;
+}
+
+.pageMenu li {
+  color: var(--text-color-v1);
+  font-family: "SF UI Display";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.pageMenu li:first-child {
+  list-style: none;
+}
+
+@media (max-width: 766px) {
+  .pageMenu {
+    padding-left: 0px !important;
+  }
+  .TopHeader h4 {
+    font-size: 34px;
+    line-height: 54px;
+  }
+  .pageMenu li{
+    font-size: 14px;
+  }
+}
+
+
+@media (max-width: 575px) {
+  .pageMenu {
+    padding-left: 0px !important;
+  }
+  .TopHeader h4 {
+    font-size: 28px;
+    line-height: 54px;
+  }
+}

@@ -1,0 +1,123 @@
+/* .navbarContainer {
+  max-width: 100%;
+  padding-inline: 0px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--white-color);
+}
+
+.searchCont {
+  display: flex;
+  width: 313px;
+  height: 45px;
+  padding: 1.5px 24px 1.5px 18px;
+  align-items: center;
+  gap: 6px;
+  background-color: var(--white-v1);
+  border-radius: 4px;
+  border: 1px solid var(--gray-v2);
+}
+
+.searchCont > input {
+  background-color: var(--white-v1);
+  color: var(--dark-v1);
+  border: none;
+  outline: none;
+}
+
+.headerTextCont > h4 {
+  color: var(--black-Color);
+  font-family: var(--font-poppins);
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 0px !important;
+}
+
+.imgNameCont {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatarImageCont {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+
+.avatarImageCont > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.headerIcons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.headerIcons .iconBox {
+  background-color: var(--white-v1);
+  border-radius: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.userCont {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.userCont > p {
+  color: var(--dark-v1);
+  font-family: var(--DarkerGrotesque);
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 0px !important;
+  cursor: pointer;
+}
+
+.popover {
+  background-color: var(--white-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 10px;
+  min-width: 800px !important;
+  max-height: 600px !important;
+  z-index: 50;
+  position: relative;
+  padding: 20px;
+}
+
+.notificationCont {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 0px !important;
+}
+
+.notificationCont h4 {
+  color: var(--black-color);
+  font-family: var(--font-poppins);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.notificationCont button {
+  width: max-content;
+  padding-inline: 40px !important;
+}
+
+.notificationInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.notificationInner div:last-child {
+  border-bottom: none !important;
+} */

@@ -1,0 +1,95 @@
+.btn {
+  cursor: pointer;
+  width: 100%;
+  transition: 0.5s all;
+  border-radius: 6px !important;
+  padding: 8px 12px;
+  outline: none !important;
+  background-color: var(--secondary-color-600);
+  color: var(--white-color);
+  color: var(--Grey-white, #fff);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: -0.084px;
+  border-radius: 8px;
+  border: none;
+}
+
+.btn:disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+.btn[color-variant="gradient"] {
+  color: white;
+  border-radius: 6px;
+  padding: 15px 32px;
+  background: linear-gradient(225deg, #e04018 0%, #f8d11d 100%), #0a2147;
+}
+.btn[color-variant="primary"] {
+  background: var(--royal-navy-blue);
+  color: var(--white-color);
+}
+.btn[color-variant="secondary"] {
+  background: var(--secondary-color);
+  border: 1px solid #E5E9EB;
+
+}
+.btn[color-variant="dark"] {
+  background: var(--black);
+  color: var(--white);
+}
+.btn[color-variant="black-outlined"] {
+  background: var(--white);
+  color: var(--black);
+  border: 1px solid var(--black) !important;
+}
+
+.btn[color-variant="light"]{
+  width: 170px;
+  border-radius: 8px;
+  border: 1px solid var(--secondary-color-600) !important;
+  background: var(--secondary-color-50);
+  color: var(--secondary-color-950);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px; 
+  letter-spacing: -0.084px;  
+}
+
+
+.btn[color-variant="tertiary"] {
+  background: var(--tertiary-color);
+  border: 1px solid #E5E9EB;
+}
+.btn[color-variant="blue"] {
+  background: var(--blue-v1);
+  color: var(--white);
+}
+
+.btn[color-variant="outlined"] {
+  /* background-color: var(--secondary-color-600); */
+  border: 1px solid var(--secondary-color-600) !important;
+  color: var(--secondary-color-600);
+  box-shadow: none !important;
+  background-color: transparent;
+}
+
+@media screen and (max-width: 767px) {
+  .btn {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 570px) {
+  .btn {
+    padding: 14px 25px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .btn {
+    padding: 12px 20px;
+  }
+}

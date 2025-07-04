@@ -1,0 +1,457 @@
+.orderParent {
+  padding: 30px 0px;
+}
+
+.orders {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.orders h6 {
+  color: var(--Mine-Shaft-800);
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.28px;
+}
+
+.orderMains {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.btn {
+  width: fit-content !important;
+  padding: 8px 20px !important;
+}
+
+/* Section Styling */
+.sectionTitle {
+  color: var(--Grey-800);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-color-200);
+}
+
+.productSection,
+.customerSection,
+.merchantSection,
+.disputeSection {
+  padding: 20px;
+}
+
+/* Product Information */
+.productInfo {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.productImage {
+  width: 120px;
+  height: 120px;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border: 1px solid var(--primary-color-200);
+}
+
+.noImage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--secondary-color-50);
+  color: var(--Grey-400);
+  font-size: 12px;
+}
+
+.productDetails {
+  flex: 1;
+}
+
+.productDetails h5 {
+  color: var(--Grey-800);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.category {
+  color: var(--Grey-400);
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+
+.description {
+  color: var(--Grey-600);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* Customer & Merchant Information */
+.customerInfo,
+.merchantInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.customerDetails,
+.merchantDetails {
+  flex: 1;
+}
+
+.customerName,
+.merchantName {
+  color: var(--Grey-800);
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contactInfo span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--Grey-400);
+  font-size: 14px;
+}
+
+
+
+/* Info Divs */
+.infoDiv,
+.vatDiv {
+  padding-block: 10px;
+  border-bottom: 1px solid #e5e9eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.infoDiv span,
+.vatDiv span {
+  color: #888;
+  font-family: "Inter";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.084px;
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.infoDiv p,
+.vatDiv p {
+  color: #454545;
+  font-family: "Inter";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: 0.48px;
+  text-align: right;
+  flex: 1;
+  margin: 0;
+}
+
+.infoSubDiv {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.priceDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.priceDiv span {
+  color: var(--Grey-400);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.priceDiv p {
+  color: var(--Grey-800);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.payableToMerchant {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #e8f5e8 0%, #f0f9f0 100%);
+  border: 2px solid #28a745;
+  border-radius: 8px;
+  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.15);
+}
+
+.payableToMerchant span {
+  color: #155724;
+  font-family: "Inter";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.084px;
+}
+
+.payableToMerchant p {
+  color: #155724;
+  font-family: "Inter";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.096px;
+  margin: 0;
+  text-shadow: 0 1px 2px rgba(21, 87, 36, 0.1);
+}
+
+.finalPrice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 15px;
+  border-top: 2px solid var(--primary-color-200);
+  margin-top: 10px;
+}
+
+.finalPrice span {
+  color: var(--Grey-800);
+  font-family: "Inter";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.finalPrice p {
+  color: #0b0b0b;
+  font-family: "Inter";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.096px;
+  margin: 0;
+}
+
+/* Shipping Status */
+.shippingStatus {
+  padding: 16px;
+  background-color: var(--secondary-color-50);
+  border-radius: 8px;
+  border: 1px solid var(--primary-color-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.shipStatus {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.shipStatus h6 {
+  color: var(--Grey-400);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.084px;
+  margin: 0;
+}
+
+.statusContainer {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: end;
+}
+
+.statusButton {
+  min-width: 120px !important;
+  height: 35px !important;
+  font-size: 12px !important;
+  border-radius: 6px !important;
+  text-transform: none !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.statusButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Dispute Styling */
+.disputeDiv {
+  border: 1px solid var(--Light-Gray-3);
+  padding: 16px;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.disputeDiv p {
+  color: var(--Grey-400);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.084px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.disputeDiv p span {
+  margin-left: 0;
+  font-weight: 600;
+  color: var(--primary-950);
+  margin-right: 4px;
+}
+
+.disputeImage {
+  margin-top: 12px;
+  margin-left: 24px;
+}
+
+.disputeImage img {
+  width: 96% !important;
+  height: 100px !important;
+  object-fit: cover !important;
+  border-radius: 8px !important;
+}
+
+/* Approval Div */
+.approvalDiv {
+  padding: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .orderParent {
+    padding: 20px 0;
+  }
+  
+  .orderMains {
+    flex-direction: column;
+    gap: 16px;
+    align-items: stretch;
+  }
+  
+  .orders h6 {
+    font-size: 24px;
+  }
+  
+  .productInfo {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .productImage {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .shippingStatus {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .statusContainer {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .statusButton {
+    width: 100% !important;
+    min-width: unset !important;
+  }
+  
+  .infoDiv,
+  .vatDiv {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .infoDiv span,
+  .vatDiv span {
+    width: 100%;
+  }
+  
+  .infoDiv p,
+  .vatDiv p {
+    text-align: left;
+  }
+  
+  .disputeDiv p {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .disputeImage {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionTitle {
+    font-size: 16px;
+  }
+  
+  .productDetails h5 {
+    font-size: 16px;
+  }
+  
+  .finalPrice span,
+  .finalPrice p {
+    font-size: 16px;
+  }
+  
+  .payableToMerchant {
+    padding: 10px 12px;
+    margin: 12px 0;
+  }
+  
+  .payableToMerchant span,
+  .payableToMerchant p {
+    font-size: 14px;
+  }
+} 

@@ -1,0 +1,16 @@
+.noDataContainer {
+  height: 100%;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.noDataContainer p {
+  color: var(--secondary-color);
+  margin-top: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}

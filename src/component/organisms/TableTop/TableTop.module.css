@@ -1,0 +1,80 @@
+.tableTop {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 10px 0px 0px 0px;
+  max-height: 64px;
+  align-items: center !important;
+}
+
+.left {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.heading {
+  color: #888;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.084px;
+}
+
+.right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  max-height: 64px;
+  margin-left: auto;
+}
+
+.btn {
+  width: max-content;
+  text-wrap: nowrap;
+}
+
+.mainContClassName {
+  margin-bottom: 0px !important;
+  min-width: 150px;
+}
+
+.mainContClassName input[type="date"] {
+  padding-right: 10px;
+  font-family: inherit;
+  color: inherit;
+  height: 40px !important;
+  margin-top: 0;
+  border: none;
+}
+
+.dropDownContainer {
+  min-width: 165px !important;
+}
+
+.mainContClassName input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+}
+
+.inputBoxStyle {
+  border-radius: 6px !important;
+  height: 32px !important;
+}
+
+.pending{
+  background-color: #FAD2AE !important;
+}
+
+.tablePadding{
+  padding: 0px 24px;
+}
+
+.datePlaceholder {
+  padding: 10px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  color: #6c757d;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+}

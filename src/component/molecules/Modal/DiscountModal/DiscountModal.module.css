@@ -1,0 +1,32 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.dropdownContainer {
+  height: auto !important;
+}
+
+.dateContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.dateInput {
+  flex: 1;
+}
+
+.inputContainer {
+  margin-bottom: 0 !important;
+}
+
+.cancel,
+.send {
+  width: fit-content;
+  width: 120px;
+}

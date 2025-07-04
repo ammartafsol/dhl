@@ -1,0 +1,24 @@
+
+.filePreview {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    border: 1px solid var(--dark-purple);
+    border-radius: 10px;
+    margin-bottom: 8px;
+    border: 1px solid var(--royal-navy-blue);
+  }
+  
+  .previewIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    z-index: 10;
+    cursor: pointer;
+  }
+  .download{
+    position: absolute;
+    right: 10px;
+    bottom: 10px
+  }

@@ -1,0 +1,72 @@
+.header {
+  border-bottom: 1px solid #f9eaffcc;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 00px;
+  margin-inline: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 3px 5px 0px rgba(255, 255, 255, 0.5) inset;
+  backdrop-filter: blur(50px);
+  /* width: 80%;
+  border-radius: 16px; */
+  margin: auto;
+  padding: 15px 26px;
+}
+.logoDiv {
+  width: 90px;
+  position: relative;
+  height: 34px;
+}
+
+.navHamIcon {
+  display: flex;
+  justify-content: end;
+}
+
+.drawerDiv {
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+}
+.drawerLogo {
+  width: 150px;
+  position: relative;
+  height: 50px;
+}
+.drawerLogo img {
+  width: 100%;
+  object-fit: contain;
+}
+.navigationDiv {
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+
+  padding: 20px;
+}
+.link {
+  text-decoration: none;
+  color: var(--secondary-color-v1-opacity);
+  font-weight: 500;
+}
+.activeLink {
+  color: var(--primary-color-opacity);
+  text-decoration: 2px solid underline var(--primary-color-opacity);
+}
+.buttonDiv {
+  gap: 10px;
+  flex-direction: column;
+  display: flex;
+}
+.dashboardButton {
+  width: 100%;
+}
+.buttonSection {
+  border-top: 1px solid rgba(249, 234, 255, 0.8);
+
+  padding: 20px;
+}

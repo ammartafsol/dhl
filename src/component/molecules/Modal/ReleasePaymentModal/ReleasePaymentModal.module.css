@@ -1,0 +1,17 @@
+
+
+.btn{
+    width: fit-content;
+}
+.actions{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.mainRelease{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}

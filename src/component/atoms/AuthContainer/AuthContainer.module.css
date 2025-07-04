@@ -1,0 +1,30 @@
+
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(
+        circle at top left,
+        #D8F0FF 0%,
+        #f2f8fc 40%,
+        #ffffff 90%
+    );}
+.child{
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+}
+
+.logo{
+    position: relative;
+    width: 282px;
+    height: 80px;
+    flex-shrink: 0;
+    margin: auto;
+}

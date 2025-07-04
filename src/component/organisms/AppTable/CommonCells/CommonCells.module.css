@@ -1,0 +1,42 @@
+.date {
+  color: var(--gray-color-v6);
+}
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  background: linear-gradient(225deg, #e04018 0%, #f8d11d 100%), #0a2147;
+  color: var(--white-color);
+  cursor: pointer;
+}
+
+.active {
+  color: #4daa9f;
+}
+
+.inactive {
+  color: #f28745;
+}
+
+.statusDiv {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.approvalButtons {
+  display: flex;
+  gap: 10px;
+}
+
+.textCell {
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  cursor: pointer !important;
+  max-lines: 1 !important;
+  height: 20px;
+}
