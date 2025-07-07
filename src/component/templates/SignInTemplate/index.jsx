@@ -27,7 +27,6 @@ const SignInTemplate = () => {
     initialValues: LOGIN_FORM_VALUES,
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      console.log("🚀 ~ SignInTemplate ~ values:", values);
       handleSubmit(values);
     },
   });
@@ -36,7 +35,7 @@ const SignInTemplate = () => {
     setLoading("loading");
 
     const { response } = await Post({
-      route: "auth/admin/login",
+      route: "auth/sub-admin/login",
       data: values,
     });
 
@@ -56,7 +55,7 @@ const SignInTemplate = () => {
         type: "success",
         message: "Login Successfully",
       });
-      router.push("/orders");
+      router.push("/");
     }
     setLoading("");
   };

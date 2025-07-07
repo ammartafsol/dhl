@@ -21,10 +21,7 @@ export default function OrdersTemplate() {
   const [loading, setLoading] = useState("");
   const [data, setData] = useState([]);
   const [countriesData, setCountriesData] = useState([]);
-  const [countryValue, setCountryValue] = useState({
-    label: "All Countries",
-    value: "",
-  });
+  const [countryValue, setCountryValue] = useState({ label: "All Countries", value: "" });
   const [cityValue, setCityValue] = useState({
     label: "All Cities", 
     value: "",
@@ -42,8 +39,8 @@ export default function OrdersTemplate() {
 
   const getOrders = async ({ 
     pg = currentPage,
-    country = countryValue.value,
-    city = cityValue.value 
+    country = countryValue?.value || "",
+    city = cityValue?.value || "" 
   }) => {
     const payload = {
       page: pg,
@@ -68,7 +65,7 @@ export default function OrdersTemplate() {
   const getCountriesAndCities = async () => {
     setLoading("countries");
     const { response } = await Get({
-      route: "shipping/countries/cities",
+      route: "shipping/country/cities",
     });
 
     if (response && Array.isArray(response)) {
@@ -110,7 +107,7 @@ export default function OrdersTemplate() {
   // Generate city options based on selected country
   const cityOptions = [
     { label: "All Cities", value: "" },
-    ...(countryValue.value && Array.isArray(countriesData)
+    ...(countryValue?.value && Array.isArray(countriesData)
       ? (countriesData.find(item => item?.country === countryValue.value)?.cities || [])
           .map(city => ({
             label: capitalizeWords((city || "").replace('-', ' ')),
@@ -122,7 +119,7 @@ export default function OrdersTemplate() {
 
   // Handle country change and reset city
   const handleCountryChange = (newCountry) => {
-    setCountryValue(newCountry);
+    setCountryValue(newCountry || { label: "All Countries", value: "" });
     setCityValue({ label: "All Cities", value: "" });
   };
 
@@ -134,8 +131,8 @@ export default function OrdersTemplate() {
     setCurrentPage(1);
     getOrders({
       pg: 1,
-      country: countryValue.value,
-      city: cityValue.value,
+      country: countryValue?.value || "",
+      city: cityValue?.value || "",
     });
   }, [countryValue, cityValue]);
 
@@ -163,7 +160,7 @@ export default function OrdersTemplate() {
                     options={cityOptions}
                     containerClass={classes.dropDownContainer}
                     border
-                    disabled={!countryValue.value}
+                    disabled={!countryValue?.value}
                   />
                 </>
               ) : (
@@ -186,8 +183,8 @@ export default function OrdersTemplate() {
             setCurrentPage(p);
             getOrders({
               pg: p,
-              country: countryValue.value,
-              city: cityValue.value,
+              country: countryValue?.value || "",
+              city: cityValue?.value || "",
             });
           }}
           renderItem={({ item, key, rowIndex, renderValue }) => {

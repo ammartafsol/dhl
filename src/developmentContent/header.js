@@ -15,7 +15,7 @@ const headerOptions = [
 
   {
     title: "Orders",
-    href: "/orders",
+    href: "/",
     icon: <TbTruckDelivery size={18} color="#fff" />,
   }
 ];
