@@ -193,7 +193,7 @@ export const ordersTableHeader = [
   {
     key: "user",
     title: "User Name",
-    style: { width: "12%" },
+    style: { width: "10%" },
     // Custom rendering handled in component
   },
   {
@@ -235,7 +235,7 @@ export const ordersTableHeader = [
   {
     key: "createdAt",
     title: "Order Date",
-    style: { width: "12%" },
+    style: { width: "10%" },
     renderValue: (cellValue) => <RenderDateCell {...{ cellValue }} />,
   },
   {
@@ -247,7 +247,7 @@ export const ordersTableHeader = [
   {
     title: "Action",
     key: "action",
-    style: { width: "8%" },
+    style: { width: "12%" },
   },
 ];
 
