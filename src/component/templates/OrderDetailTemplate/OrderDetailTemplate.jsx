@@ -219,8 +219,8 @@ const OrderDetailTemplate = ({ slug }) => {
                 </div>
               </div>
             </BorderWrapper>
-            {order?.status &&
-              ["delivered", "pending"].includes(order.status) && (
+            {(order?.status && order?.status !== "delivered") &&
+              ["paid", "delivered", "dispatched"].includes(order.status) && (
                 <Button
                   variant="contained"
                   color="primary"
