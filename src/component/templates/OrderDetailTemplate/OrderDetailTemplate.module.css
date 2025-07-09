@@ -302,9 +302,7 @@
 }
 
 .statusButton {
-  min-width: 120px !important;
-  height: 35px !important;
-  font-size: 12px !important;
+  font-size: 13px !important;
   border-radius: 6px !important;
   text-transform: none !important;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
@@ -359,6 +357,12 @@
 /* Approval Div */
 .approvalDiv {
   padding: 0;
+}
+
+.mainLeftCol{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Responsive Design */

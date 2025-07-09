@@ -114,12 +114,13 @@ const OrderDetailTemplate = ({ slug }) => {
     if (order?.status === "dispatched") {
       return "Deliver Order";
     }
-    return order?.status;
+    return capitalizeFirstLetter(order?.status);
   };
 
   // Handle status change
   const handleStatusChange = async () => {
     if (["delivered", "pending"].includes(order?.status)) return;
+
     const status =
       order?.deliveryType === "pickup"
         ? "delivered"
@@ -141,8 +142,6 @@ const OrderDetailTemplate = ({ slug }) => {
     }
     setLoading("");
   };
-
-
 
   useEffect(() => {
     if (slug) {
@@ -187,7 +186,7 @@ const OrderDetailTemplate = ({ slug }) => {
 
         <Row>
           {/* Left Column - Product & Customer Info */}
-          <Col md={6}>
+          <Col md={6} className={classes?.mainLeftCol}>
             {/* Product Information */}
             <BorderWrapper className={classes.productSection}>
               <h6 className={classes.sectionTitle}>Product Information</h6>
@@ -220,6 +219,32 @@ const OrderDetailTemplate = ({ slug }) => {
                 </div>
               </div>
             </BorderWrapper>
+            {order?.status &&
+              ["delivered", "pending"].includes(order.status) && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  disabled={loading === "status"}
+                  onClick={() =>
+                    setAreYouSureModalWith({
+                      isOpen: true,
+                      message: `Are you sure you want to change the order status to ${
+                        order?.deliveryType === "pickup"
+                          ? "picked up"
+                          : order?.status === "paid"
+                          ? "dispatched"
+                          : "delivered"
+                      }?`,
+                    })
+                  }
+                  className={classes.statusButton}
+                >
+                  {loading === "status"
+                    ? "Updating..."
+                    : getStatusChangeLabel()}
+                </Button>
+              )}
 
             {/* Customer Information */}
             <BorderWrapper className={classes.customerSection}>
@@ -276,32 +301,6 @@ const OrderDetailTemplate = ({ slug }) => {
                   </div>
                   <div className={classes.statusContainer}>
                     <StatusBadge status={getShippingStatus()} />
-                    {order?.status &&
-                      !["delivered", "pending"].includes(order.status) && (
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          size="small"
-                          disabled={loading === "status"}
-                          onClick={() =>
-                            setAreYouSureModalWith({
-                              isOpen: true,
-                              message: `Are you sure you want to change the order status to ${
-                                order?.deliveryType === "pickup"
-                                  ? "picked up"
-                                  : order?.status === "paid"
-                                  ? "dispatched"
-                                  : "delivered"
-                              }?`,
-                            })
-                          }
-                          className={classes.statusButton}
-                        >
-                          {loading === "status"
-                            ? "Updating..."
-                            : getStatusChangeLabel()}
-                        </Button>
-                      )}
                   </div>
                 </div>
 
