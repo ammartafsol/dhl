@@ -23,6 +23,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { FaShippingFast } from "react-icons/fa";
 import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import classes from "./OrderDetailTemplate.module.css";
+import { orderStatus } from "@/developmentContent/enums/enums";
 
 const OrderDetailTemplate = ({ slug }) => {
   const router = useRouter();

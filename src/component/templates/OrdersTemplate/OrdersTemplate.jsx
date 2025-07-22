@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import classes from "./OrdersTemplate.module.css";
+import { orderStatus } from "@/developmentContent/enums/enums";
 
 export default function OrdersTemplate() {
   const router = useRouter();
@@ -26,6 +27,7 @@ export default function OrdersTemplate() {
     label: "All Cities", 
     value: "",
   });
+  const [statusValue, setStatusValue] = useState({ label: "All Statuses", value: "" });
 
   const getShippingStatus = (order) => {
     if (order?.deliveryType === "pickup" && order?.status === "paid")
@@ -40,13 +42,15 @@ export default function OrdersTemplate() {
   const getOrders = async ({ 
     pg = currentPage,
     country = countryValue?.value || "",
-    city = cityValue?.value || "" 
+    city = cityValue?.value || "",
+    status = statusValue?.value || ""
   }) => {
     const payload = {
       page: pg,
       limit: RECORDS_LIMIT,
       country: country,
       city: city,
+      status: status,
     };
     setLoading("loading");
     const query = new URLSearchParams(payload).toString();
@@ -117,6 +121,7 @@ export default function OrdersTemplate() {
     ),
   ];
 
+
   // Handle country change and reset city
   const handleCountryChange = (newCountry) => {
     setCountryValue(newCountry || { label: "All Countries", value: "" });
@@ -133,8 +138,9 @@ export default function OrdersTemplate() {
       pg: 1,
       country: countryValue?.value || "",
       city: cityValue?.value || "",
+      status: statusValue?.value || "",
     });
-  }, [countryValue, cityValue]);
+  }, [countryValue, cityValue, statusValue]);
 
   return (
     <Container>
@@ -162,6 +168,14 @@ export default function OrdersTemplate() {
                     border
                     disabled={!countryValue?.value}
                   />
+                  <DropDown
+                    placeholder={"Status"}
+                    value={statusValue}
+                    setValue={setStatusValue}
+                    options={orderStatus}
+                    containerClass={classes.dropDownContainer}
+                    border
+                  />
                 </>
               ) : (
                 <div className={classes.loadingText}>Loading filters...</div>
@@ -185,6 +199,7 @@ export default function OrdersTemplate() {
               pg: p,
               country: countryValue?.value || "",
               city: cityValue?.value || "",
+              status: statusValue?.value || "",
             });
           }}
           renderItem={({ item, key, rowIndex, renderValue }) => {

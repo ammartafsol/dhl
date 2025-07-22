@@ -143,3 +143,25 @@ export const SelectType = [
     value:"private"
   },
 ]
+
+
+
+ 
+export const orderStatus = [
+  {
+    label: "All",
+    value: "all"
+  },
+  {
+    label: "Dispatched",
+    value: "dispatched"
+  },
+  {
+    label: "Paid",
+    value: "paid"
+  },
+  {
+    label: "Delivered",
+    value: "delivered"
+  }
+]

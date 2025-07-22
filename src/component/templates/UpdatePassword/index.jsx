@@ -13,11 +13,13 @@ import useAxios from "@/interceptor/axiosInterceptor";
 import { updatePasswordSchema } from "@/formik/formikSchema/formik-schemas";
 import { saveLoginUserData, updateAccessToken } from "@/store/auth/authSlice";
 import { useDispatch } from "react-redux";
+import { useRouter } from "next/navigation";
 
 const UpdatePasswordTemplate = () => {
   const [loading, setLoading] = useState("");
   const {Patch} = useAxios();
   const dispatch = useDispatch();
+  const router = useRouter();
   const updatePasswordFormik = useFormik({
     initialValues: {
       oldPassword: "",
@@ -65,6 +67,25 @@ const UpdatePasswordTemplate = () => {
         <div className={classes?.mainContainer}>
     <BorderWrapper>
       <div className={classes.Wrapper}>
+        {/* Back Button */}
+        <div className={classes.backButtonContainer}>
+          <Button
+            onClick={() => router.back()}
+            label="← Back"
+            variant="outlined"
+            customStyle={{
+              width: 'fit-content',
+              padding: '10px 20px',
+              fontSize: '14px',
+              fontWeight: '500',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
+            }}
+            className={classes.backButton}
+          />
+        </div>
+        
         <h5 className={`${"heading1"} ${classes.passwordText}`}>
           Update Password
         </h5>
