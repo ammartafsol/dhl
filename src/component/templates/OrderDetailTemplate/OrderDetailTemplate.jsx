@@ -309,7 +309,19 @@ const OrderDetailTemplate = ({ slug }) => {
                       <MdOutlineEmail size={16} />
                       {order?.user?.email}
                     </span>
+                    {order?.user?.phoneNumber && (
+                      <span>
+                        <MdOutlinePhone size={16} />
+                        +{order?.user?.phoneNumber}
+                      </span>
+                    )}
                   </div>
+                  {order?.user?.address && (
+                    <div className={classes.addressInfo}>
+                      <strong>Address:</strong>
+                      <p>{order?.user?.address}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </BorderWrapper>
@@ -366,10 +378,16 @@ const OrderDetailTemplate = ({ slug }) => {
                     {order?.merchant?.phoneNumber && (
                       <span>
                         <MdOutlinePhone size={16} />
-                        {order?.merchant?.phoneNumber}
+                        +{order?.merchant?.phoneNumber}
                       </span>
                     )}
                   </div>
+                  {order?.merchant?.address && (
+                    <div className={classes.addressInfo}>
+                      <strong>Address:</strong>
+                      <p>{order?.merchant?.address}</p>
+                    </div>
+                  )}
                 </div>
               </div>
             </BorderWrapper>
