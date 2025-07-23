@@ -27,6 +27,7 @@ import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import classes from "./OrderDetailTemplate.module.css";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import ImagePreview from "@/component/molecules/ImagePreview/ImagePreview";
 
 const OrderDetailTemplate = ({ slug }) => {
   const router = useRouter();
@@ -335,42 +336,24 @@ const OrderDetailTemplate = ({ slug }) => {
               </div>
             </BorderWrapper>
 
-            {/* Delivery Timeline Section */}
+            {/* Expected Delivery Time Section */}
             {order?.expectedDeliveryDate && order?.expectedDeliveryTime && (
               <BorderWrapper className={classes.timelineSection}>
-                <h6 className={classes.sectionTitle}>Delivery Timeline</h6>
+                <h6 className={classes.sectionTitle}>Expected Delivery Time</h6>
                 <div className={classes.timelineInfo}>
                   <div className={classes.timelineItem}>
-                    <strong>Expected Delivery Date:</strong>
+                    <strong>Date:</strong>
                     <span>{moment(order.expectedDeliveryDate).format("ll")}</span>
                   </div>
                   <div className={classes.timelineItem}>
-                    <strong>Expected Delivery Time:</strong>
+                    <strong>Time:</strong>
                     <span>{moment(order.expectedDeliveryTime, "HH:mm").format("hh:mm A")}</span>
                   </div>
                 </div>
               </BorderWrapper>
             )}
 
-            {/* Delivery Photos Section */}
-            {order?.deliveryPhotos && order.deliveryPhotos.length > 0 && (
-              <BorderWrapper className={classes.photosSection}>
-                <h6 className={classes.sectionTitle}>Delivery Proof Photos</h6>
-                <div className={classes.photosGrid}>
-                  {order.deliveryPhotos.map((photo, index) => (
-                    <div key={index} className={classes.photoItem}>
-                      <img 
-                        src={mediaUrl(photo)} 
-                        alt={`Delivery proof ${index + 1}`}
-                        className={classes.photoImage}
-                        onClick={() => window.open(mediaUrl(photo), '_blank')}
-                      />
-                    </div>
-                  ))}
-                </div>
-              </BorderWrapper>
-            )}
-
+            
             {/* Merchant Information */}
             <BorderWrapper className={classes.merchantSection}>
               <h6 className={classes.sectionTitle}>Merchant Information</h6>
@@ -400,6 +383,23 @@ const OrderDetailTemplate = ({ slug }) => {
                 </div>
               </div>
             </BorderWrapper>
+
+            {/* Delivery Proof */}
+            {order?.deliveryProof && order.deliveryProof.length > 0 && (
+              <BorderWrapper>
+                <div className={classes.deliveryProof}>
+                  <h6>Delivery Proof</h6>
+                  <div>
+                  <ImagePreview 
+                    images={order.deliveryProof} 
+                    media={false}
+                  />
+                  
+                  </div>
+                </div>
+              </BorderWrapper>
+            )}
+
           </Col>
 
           {/* Right Column - Order Details */}

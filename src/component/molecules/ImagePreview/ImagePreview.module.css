@@ -14,4 +14,5 @@
   margin-bottom: 10px;
   object-fit: cover;
   cursor: pointer;
+  border-radius: 5px;
 }

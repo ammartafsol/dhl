@@ -454,6 +454,28 @@
   height: 100%;
   object-fit: cover;
 }
+.deliveryProof h6{
+  margin-bottom: 20px;
+}
+
+.deliveryProofContainer {
+  margin-top: 12px;
+}
+
+.deliveryProofImage {
+  margin-bottom: 10px;
+}
+
+.deliveryProofImage img {
+  border-radius: 8px;
+  border: 2px solid var(--primary-color-200);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.deliveryProofImage img:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(239, 105, 35, 0.15);
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
