@@ -365,6 +365,74 @@
   gap: 10px;
 }
 
+/* Timeline Section */
+.timelineSection {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.timelineInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timelineItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.timelineItem strong {
+  color: var(--Grey-800);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.timelineItem span {
+  color: var(--Grey-600);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Photos Section */
+.photosSection {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.photosGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.photoItem {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.photoItem:hover {
+  border-color: var(--primary-color-400);
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.photoImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .orderParent {
@@ -433,6 +501,18 @@
   .disputeImage {
     margin-left: 0;
   }
+
+  /* Responsive adjustments for new sections */
+  .timelineItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .photosGrid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 8px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -457,5 +537,15 @@
   .payableToMerchant span,
   .payableToMerchant p {
     font-size: 14px;
+  }
+
+  .timelineSection,
+  .photosSection {
+    padding: 16px;
+  }
+  
+  .photosGrid {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 6px;
   }
 } 

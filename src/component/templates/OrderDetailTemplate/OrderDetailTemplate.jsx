@@ -6,6 +6,7 @@ import PageHeading from "@/component/atoms/PageHeading/PageHeading";
 import RenderToast from "@/component/atoms/RenderToast";
 import ShowMoreShowLessText from "@/component/atoms/ShowMoreShowLess";
 import ConfirmModal from "@/component/molecules/Modal/ConfirmModal/ConfirmModal";
+import DeliveryModal from "@/component/molecules/Modal/DeliveryModal/DeliveryModal";
 import StatusBadge from "@/component/atoms/StatusBadge";
 import { VAT_PERCENTAGE } from "@/const";
 import useAxios from "@/interceptor/axiosInterceptor";
@@ -34,6 +35,7 @@ const OrderDetailTemplate = ({ slug }) => {
     isOpen: false,
     message: "",
   });
+  const [deliveryModalOpen, setDeliveryModalOpen] = useState(false);
 
   // Helper function to capitalize each word
   const capitalizeWords = (str) => {
@@ -118,8 +120,8 @@ const OrderDetailTemplate = ({ slug }) => {
     return capitalizeFirstLetter(order?.status);
   };
 
-  // Handle status change
-  const handleStatusChange = async () => {
+  // Handle status change with delivery modal
+  const handleStatusChangeWithDelivery = async (requestData) => {
     if (["delivered", "pending"].includes(order?.status)) return;
 
     const status =
@@ -128,11 +130,57 @@ const OrderDetailTemplate = ({ slug }) => {
         : order?.status === "paid"
         ? "dispatched"
         : "delivered";
+    
+    setLoading("status");
+    
+    try {
+      // Add status to request data
+      const dataToSend = {
+        ...requestData,
+        status: status,
+      };
+      
+      const { response } = await Patch({
+        route: `orders/status/${slug}`,
+        data: dataToSend,
+      });
+      
+      if (response) {
+        await getOrderDetails();
+        setDeliveryModalOpen(false);
+        RenderToast({
+          message: "Order status changed successfully",
+          type: "success",
+        });
+      }
+    } catch (error) {
+      console.error("Status change error:", error);
+      RenderToast({
+        message: "Failed to update order status",
+        type: "error",
+      });
+    }
+    
+    setLoading("");
+  };
+
+  // Handle simple status change (for pickup orders)
+  const handleStatusChange = async () => {
+    if (["delivered", "pending"].includes(order?.status)) return;
+    
+    const status =
+      order?.deliveryType === "pickup"
+        ? "delivered"
+        : order?.status === "paid"
+        ? "dispatched"
+        : "delivered";
+    
     setLoading("status");
     const { response } = await Patch({
       route: `orders/status/${slug}`,
       data: { status },
     });
+    
     if (response) {
       await getOrderDetails();
       setAreYouSureModalWith({ isOpen: false, message: "" });
@@ -220,32 +268,33 @@ const OrderDetailTemplate = ({ slug }) => {
                 </div>
               </div>
             </BorderWrapper>
-            {(order?.status && order?.status !== "delivered") &&
-              ["paid", "delivered", "dispatched"].includes(order.status) && (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  size="small"
-                  disabled={loading === "status"}
-                  onClick={() =>
-                    setAreYouSureModalWith({
-                      isOpen: true,
-                      message: `Are you sure you want to change the order status to ${
-                        order?.deliveryType === "pickup"
-                          ? "picked up"
-                          : order?.status === "paid"
-                          ? "dispatched"
-                          : "delivered"
-                      }?`,
-                    })
-                  }
-                  className={classes.statusButton}
-                >
-                  {loading === "status"
-                    ? "Updating..."
-                    : getStatusChangeLabel()}
-                </Button>
-              )}
+            {/* Dispatch Order Button (only if status is paid) */}
+            {order?.status &&
+                      !["delivered", "pending","cancelled"].includes(order.status) && (
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          size="small"
+                          disabled={loading === "status"}
+                          onClick={() => {
+                            if (order?.deliveryType === "pickup") {
+                              // For pickup orders, use simple confirmation
+                              setAreYouSureModalWith({
+                                isOpen: true,
+                                message: `Are you sure you want to mark this order as picked up?`,
+                              });
+                            } else {
+                              // For delivery orders, use delivery modal
+                              setDeliveryModalOpen(true);
+                            }
+                          }}
+                          className={classes.statusButton}
+                        >
+                          {loading === "status"
+                            ? "Updating..."
+                            : getStatusChangeLabel()}
+                        </Button>
+                      )}
 
             {/* Customer Information */}
             <BorderWrapper className={classes.customerSection}>
@@ -264,6 +313,42 @@ const OrderDetailTemplate = ({ slug }) => {
                 </div>
               </div>
             </BorderWrapper>
+
+            {/* Delivery Timeline Section */}
+            {order?.expectedDeliveryDate && order?.expectedDeliveryTime && (
+              <BorderWrapper className={classes.timelineSection}>
+                <h6 className={classes.sectionTitle}>Delivery Timeline</h6>
+                <div className={classes.timelineInfo}>
+                  <div className={classes.timelineItem}>
+                    <strong>Expected Delivery Date:</strong>
+                    <span>{moment(order.expectedDeliveryDate).format("ll")}</span>
+                  </div>
+                  <div className={classes.timelineItem}>
+                    <strong>Expected Delivery Time:</strong>
+                    <span>{moment(order.expectedDeliveryTime, "HH:mm").format("hh:mm A")}</span>
+                  </div>
+                </div>
+              </BorderWrapper>
+            )}
+
+            {/* Delivery Photos Section */}
+            {order?.deliveryPhotos && order.deliveryPhotos.length > 0 && (
+              <BorderWrapper className={classes.photosSection}>
+                <h6 className={classes.sectionTitle}>Delivery Proof Photos</h6>
+                <div className={classes.photosGrid}>
+                  {order.deliveryPhotos.map((photo, index) => (
+                    <div key={index} className={classes.photoItem}>
+                      <img 
+                        src={mediaUrl(photo)} 
+                        alt={`Delivery proof ${index + 1}`}
+                        className={classes.photoImage}
+                        onClick={() => window.open(mediaUrl(photo), '_blank')}
+                      />
+                    </div>
+                  ))}
+                </div>
+              </BorderWrapper>
+            )}
 
             {/* Merchant Information */}
             <BorderWrapper className={classes.merchantSection}>
@@ -302,6 +387,7 @@ const OrderDetailTemplate = ({ slug }) => {
                   </div>
                   <div className={classes.statusContainer}>
                     <StatusBadge status={getShippingStatus()} />
+                   
                   </div>
                 </div>
 
@@ -455,6 +541,16 @@ const OrderDetailTemplate = ({ slug }) => {
         message={areYouSureModalWith.message}
         onYesClick={handleStatusChange}
         isLoading={loading === "status"}
+      />
+
+      {/* Delivery Modal */}
+      <DeliveryModal
+        isOpen={deliveryModalOpen}
+        onClose={() => setDeliveryModalOpen(false)}
+        onSubmit={handleStatusChangeWithDelivery}
+        isLoading={loading === "status"}
+        orderStatus={order?.status}
+        deliveryType={order?.deliveryType}
       />
     </div>
   );
