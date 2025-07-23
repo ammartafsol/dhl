@@ -15,6 +15,7 @@ import {
   getFormattedPrice,
   mediaUrl,
   mergeClass,
+  BaseURL,
 } from "@/resources/utils/helper";
 import moment from "moment-timezone";
 import Image from "next/image";
@@ -24,11 +25,13 @@ import { Col, Container, Row } from "react-bootstrap";
 import { FaShippingFast } from "react-icons/fa";
 import { MdOutlineEmail, MdOutlinePhone } from "react-icons/md";
 import classes from "./OrderDetailTemplate.module.css";
-import { orderStatus } from "@/developmentContent/enums/enums";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const OrderDetailTemplate = ({ slug }) => {
   const router = useRouter();
   const { Get, Patch } = useAxios();
+  const { accessToken } = useSelector((state) => state.authReducer);
   const [loading, setLoading] = useState("");
   const [order, setOrder] = useState(null);
   const [areYouSureModalWith, setAreYouSureModalWith] = useState({
@@ -67,14 +70,20 @@ const OrderDetailTemplate = ({ slug }) => {
   const handleDownloadInvoice = async () => {
     try {
       setLoading("download");
-      const { response } = await Get({
-        route: `orders/invoice/${slug}`,
-        responseType: "blob",
+      
+      const response = await axios({
+        method: 'GET',
+        url: BaseURL(`orders/invoice/${slug}`),
+        responseType: 'blob',
+        headers: {
+          'Authorization': `Bearer ${accessToken}`,
+          'Accept': 'application/pdf',
+        },
       });
 
-      if (response) {
-        const file = new Blob([response], { type: "application/pdf" });
-        const fileURL = window.URL.createObjectURL(file);
+      if (response.data) {
+        const blob = new Blob([response.data], { type: 'application/pdf' });
+        const fileURL = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = fileURL;
         link.download = `invoice-${order?.slug || "order"}.pdf`;
