@@ -157,7 +157,7 @@ export const orderStatus = [
     value: "dispatched"
   },
   {
-    label: "Paid",
+    label: "Pending",
     value: "paid"
   },
   {
