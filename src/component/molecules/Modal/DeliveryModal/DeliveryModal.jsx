@@ -27,11 +27,9 @@ const DeliveryModal = ({
 
   // Reset form when modal opens/closes
   useEffect(() => {
-    if (!isOpen) {
-      setDeliveryDate("");
-      setDeliveryTime("");
-      setUploadedFiles([]);
-    }
+    setDeliveryDate("");
+    setDeliveryTime("");
+    setUploadedFiles([]);
   }, [isOpen]);
 
   const handleSubmit = () => {
@@ -97,6 +95,7 @@ const DeliveryModal = ({
         {/* Delivery Photos Section - Only for Deliver Order */}
         {isDeliverOrder && (
           <MultiFileUpload
+            key={`delivery-upload-${isOpen}`}
             onFilesUploaded={setUploadedFiles}
             maxFiles={3}
             accept="image/*"

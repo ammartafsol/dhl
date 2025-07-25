@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { MdOutlinePhotoCamera, MdOutlineDelete } from "react-icons/md";
 import useAxios from "@/interceptor/axiosInterceptor";
 import { config } from "@/config";
@@ -9,7 +9,22 @@ const MultiFileUpload = ({ onFilesUploaded, maxFiles = 3, accept = "image/*", ti
   const [files, setFiles] = useState([]);
   const [uploading, setUploading] = useState(false);
   const [deletingFileId, setDeletingFileId] = useState(null);
+  const fileInputRef = useRef(null);
   const { Post, Patch } = useAxios();
+
+  // Reset file input when component unmounts or files change
+  const resetFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+  };
+
+  // Reset file input when files array is empty (component reset)
+  useEffect(() => {
+    if (files.length === 0) {
+      resetFileInput();
+    }
+  }, [files.length]);
 
   const handleFileUpload = async (event) => {
     const selectedFiles = Array.from(event.target.files);
@@ -53,11 +68,15 @@ const MultiFileUpload = ({ onFilesUploaded, maxFiles = 3, accept = "image/*", ti
       const uploadedFiles = await Promise.all(uploadPromises);
       const validFiles = uploadedFiles.filter(file => file !== null);
 
-      setFiles(prev => [...prev, ...validFiles]);
+      const updatedFiles = [...files, ...validFiles];
+      setFiles(updatedFiles);
+      
+      // Reset the file input to allow re-uploading the same file
+      resetFileInput();
       
       // Notify parent component about uploaded files
       if (onFilesUploaded) {
-        onFilesUploaded([...files, ...validFiles]);
+        onFilesUploaded(updatedFiles);
       }
 
     } catch (error) {
@@ -87,6 +106,9 @@ const MultiFileUpload = ({ onFilesUploaded, maxFiles = 3, accept = "image/*", ti
         const updatedFiles = files.filter(file => file.id !== fileId);
         setFiles(updatedFiles);
         
+        // Reset the file input to allow re-uploading the same file
+        resetFileInput();
+        
         // Notify parent component about updated files
         if (onFilesUploaded) {
           onFilesUploaded(updatedFiles);
@@ -115,6 +137,7 @@ const MultiFileUpload = ({ onFilesUploaded, maxFiles = 3, accept = "image/*", ti
         {files.length < maxFiles && (
           <div className={classes.uploadButton}>
             <input
+              ref={fileInputRef}
               type="file"
               accept={accept}
               multiple
