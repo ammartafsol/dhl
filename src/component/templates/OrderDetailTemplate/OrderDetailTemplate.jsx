@@ -71,19 +71,19 @@ const OrderDetailTemplate = ({ slug }) => {
   const handleDownloadInvoice = async () => {
     try {
       setLoading("download");
-      
+
       const response = await axios({
-        method: 'GET',
+        method: "GET",
         url: BaseURL(`orders/invoice/${slug}`),
-        responseType: 'blob',
+        responseType: "blob",
         headers: {
-          'Authorization': `Bearer ${accessToken}`,
-          'Accept': 'application/pdf',
+          Authorization: `Bearer ${accessToken}`,
+          Accept: "application/pdf",
         },
       });
 
       if (response.data) {
-        const blob = new Blob([response.data], { type: 'application/pdf' });
+        const blob = new Blob([response.data], { type: "application/pdf" });
         const fileURL = window.URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = fileURL;
@@ -140,21 +140,21 @@ const OrderDetailTemplate = ({ slug }) => {
         : order?.status === "paid"
         ? "dispatched"
         : "delivered";
-    
+
     setLoading("status");
-    
+
     try {
       // Add status to request data
       const dataToSend = {
         ...requestData,
         status: status,
       };
-      
+
       const { response } = await Patch({
         route: `orders/status/${slug}`,
         data: dataToSend,
       });
-      
+
       if (response) {
         await getOrderDetails();
         setDeliveryModalOpen(false);
@@ -170,27 +170,27 @@ const OrderDetailTemplate = ({ slug }) => {
         type: "error",
       });
     }
-    
+
     setLoading("");
   };
 
   // Handle simple status change (for pickup orders)
   const handleStatusChange = async () => {
     if (["delivered", "pending"].includes(order?.status)) return;
-    
+
     const status =
       order?.deliveryType === "pickup"
         ? "delivered"
         : order?.status === "paid"
         ? "dispatched"
         : "delivered";
-    
+
     setLoading("status");
     const { response } = await Patch({
       route: `orders/status/${slug}`,
       data: { status },
     });
-    
+
     if (response) {
       await getOrderDetails();
       setAreYouSureModalWith({ isOpen: false, message: "" });
@@ -280,31 +280,31 @@ const OrderDetailTemplate = ({ slug }) => {
             </BorderWrapper>
             {/* Dispatch Order Button (only if status is paid) */}
             {order?.status &&
-                      !["delivered", "pending","cancelled"].includes(order.status) && (
-                        <Button
-                          variant="contained"
-                          color="primary"
-                          size="small"
-                          disabled={loading === "status"}
-                          onClick={() => {
-                            if (order?.deliveryType === "pickup") {
-                              // For pickup orders, use simple confirmation
-                              setAreYouSureModalWith({
-                                isOpen: true,
-                                message: `Are you sure you want to mark this order as picked up?`,
-                              });
-                            } else {
-                              // For delivery orders, use delivery modal
-                              setDeliveryModalOpen(true);
-                            }
-                          }}
-                          className={classes.statusButton}
-                        >
-                          {loading === "status"
-                            ? "Updating..."
-                            : getStatusChangeLabel()}
-                        </Button>
-                      )}
+              !["delivered", "pending", "cancelled"].includes(order.status) && (
+                <Button
+                  variant="contained"
+                  color="primary"
+                  size="small"
+                  disabled={loading === "status"}
+                  onClick={() => {
+                    if (order?.deliveryType === "pickup") {
+                      // For pickup orders, use simple confirmation
+                      setAreYouSureModalWith({
+                        isOpen: true,
+                        message: `Are you sure you want to mark this order as picked up?`,
+                      });
+                    } else {
+                      // For delivery orders, use delivery modal
+                      setDeliveryModalOpen(true);
+                    }
+                  }}
+                  className={classes.statusButton}
+                >
+                  {loading === "status"
+                    ? "Updating..."
+                    : getStatusChangeLabel()}
+                </Button>
+              )}
 
             {/* Customer Information */}
             <BorderWrapper className={classes.customerSection}>
@@ -321,8 +321,7 @@ const OrderDetailTemplate = ({ slug }) => {
                     </span>
                     {order?.user?.phoneNumber && (
                       <span>
-                        <MdOutlinePhone size={16} />
-                        +{order?.user?.phoneNumber}
+                        <MdOutlinePhone size={16} />+{order?.user?.phoneNumber}
                       </span>
                     )}
                   </div>
@@ -337,23 +336,26 @@ const OrderDetailTemplate = ({ slug }) => {
             </BorderWrapper>
 
             {/* Expected Delivery Time Section */}
-            {order?.expectedDeliveryDate && order?.expectedDeliveryTime && (
+            {order?.expectedDeliveryDate && (
               <BorderWrapper className={classes.timelineSection}>
                 <h6 className={classes.sectionTitle}>Expected Delivery Time</h6>
                 <div className={classes.timelineInfo}>
                   <div className={classes.timelineItem}>
                     <strong>Date:</strong>
-                    <span>{moment(order.expectedDeliveryDate).format("ll")}</span>
+                    <span>
+                      {moment(order.expectedDeliveryDate).format("ll")}
+                    </span>
                   </div>
-                  <div className={classes.timelineItem}>
-                    <strong>Time:</strong>
-                    <span>{moment(order.expectedDeliveryTime, "HH:mm").format("hh:mm A")}</span>
-                  </div>
+                                     <div className={classes.timelineItem}>
+                     <strong>Time:</strong>
+                     <span>
+                       {moment(order.expectedDeliveryDate).format("hh:mm A")}
+                     </span>
+                   </div>
                 </div>
               </BorderWrapper>
             )}
 
-            
             {/* Merchant Information */}
             <BorderWrapper className={classes.merchantSection}>
               <h6 className={classes.sectionTitle}>Merchant Information</h6>
@@ -369,8 +371,8 @@ const OrderDetailTemplate = ({ slug }) => {
                     </span>
                     {order?.merchant?.phoneNumber && (
                       <span>
-                        <MdOutlinePhone size={16} />
-                        +{order?.merchant?.phoneNumber}
+                        <MdOutlinePhone size={16} />+
+                        {order?.merchant?.phoneNumber}
                       </span>
                     )}
                   </div>
@@ -390,16 +392,11 @@ const OrderDetailTemplate = ({ slug }) => {
                 <div className={classes.deliveryProof}>
                   <h6>Delivery Proof</h6>
                   <div>
-                  <ImagePreview 
-                    images={order.deliveryProof} 
-                    media={false}
-                  />
-                  
+                    <ImagePreview images={order.deliveryProof} media={false} />
                   </div>
                 </div>
               </BorderWrapper>
             )}
-
           </Col>
 
           {/* Right Column - Order Details */}
@@ -414,7 +411,6 @@ const OrderDetailTemplate = ({ slug }) => {
                   </div>
                   <div className={classes.statusContainer}>
                     <StatusBadge status={getShippingStatus()} />
-                   
                   </div>
                 </div>
 
