@@ -7,6 +7,7 @@ import RenderToast from "@/component/atoms/RenderToast";
 import ShowMoreShowLessText from "@/component/atoms/ShowMoreShowLess";
 import ConfirmModal from "@/component/molecules/Modal/ConfirmModal/ConfirmModal";
 import DeliveryModal from "@/component/molecules/Modal/DeliveryModal/DeliveryModal";
+import EditDeliveryTimeModal from "@/component/molecules/Modal/EditDeliveryTimeModal/EditDeliveryTimeModal";
 import StatusBadge from "@/component/atoms/StatusBadge";
 import { VAT_PERCENTAGE } from "@/const";
 import useAxios from "@/interceptor/axiosInterceptor";
@@ -40,6 +41,7 @@ const OrderDetailTemplate = ({ slug }) => {
     message: "",
   });
   const [deliveryModalOpen, setDeliveryModalOpen] = useState(false);
+  const [editDeliveryTimeModalOpen, setEditDeliveryTimeModalOpen] = useState(false);
 
   // Helper function to capitalize each word
   const capitalizeWords = (str) => {
@@ -202,6 +204,38 @@ const OrderDetailTemplate = ({ slug }) => {
     setLoading("");
   };
 
+    // Handle delivery time update
+  const handleDeliveryTimeUpdate = async (newDeliveryTime) => {
+    setLoading("deliveryTime");
+
+    try {
+      const { response } = await Patch({
+        route: `orders/edit/delivery/${slug}`,
+        data: { 
+          expectedDeliveryDate: newDeliveryTime.toISOString().split('T')[0], // YYYY-MM-DD format
+          expectedDeliveryTime: newDeliveryTime.toTimeString().slice(0, 5) // HH:mm format
+        },
+      });
+
+      if (response) {
+        await getOrderDetails();
+        setEditDeliveryTimeModalOpen(false);
+        RenderToast({
+          message: "Expected delivery time updated successfully",
+          type: "success",
+        });
+      }
+    } catch (error) {
+      console.error("Delivery time update error:", error);
+      RenderToast({
+        message: "Failed to update expected delivery time",
+        type: "error",
+      });
+    }
+
+    setLoading("");
+  };
+
   useEffect(() => {
     if (slug) {
       getOrderDetails();
@@ -338,7 +372,9 @@ const OrderDetailTemplate = ({ slug }) => {
             {/* Expected Delivery Time Section */}
             {order?.expectedDeliveryDate && (
               <BorderWrapper className={classes.timelineSection}>
-                <h6 className={classes.sectionTitle}>Expected Delivery Time</h6>
+                <div className={classes.timelineHeader}>
+                  <h6 className={classes.sectionTitle}>Expected Delivery Time</h6>
+                </div>
                 <div className={classes.timelineInfo}>
                   <div className={classes.timelineItem}>
                     <strong>Date:</strong>
@@ -346,13 +382,23 @@ const OrderDetailTemplate = ({ slug }) => {
                       {moment(order.expectedDeliveryDate).format("ll")}
                     </span>
                   </div>
-                                     <div className={classes.timelineItem}>
-                     <strong>Time:</strong>
-                     <span>
-                       {moment(order.expectedDeliveryDate).format("hh:mm A")}
-                     </span>
-                   </div>
+                  <div className={classes.timelineItem}>
+                    <strong>Time:</strong>
+                    <span>
+                      {moment(order.expectedDeliveryDate).format("hh:mm A")}
+                    </span>
+                  </div>
                 </div>
+                {order?.status !== "delivered" && (
+                    <Button
+                      label="Edit"
+                      onClick={() => setEditDeliveryTimeModalOpen(true)}
+                      variant="outlined"
+                      size="small"
+                      className={classes.editButton}
+                      disabled={loading === "deliveryTime"}
+                    />
+                  )}
               </BorderWrapper>
             )}
 
@@ -574,6 +620,15 @@ const OrderDetailTemplate = ({ slug }) => {
         isLoading={loading === "status"}
         orderStatus={order?.status}
         deliveryType={order?.deliveryType}
+      />
+
+      {/* Edit Delivery Time Modal */}
+      <EditDeliveryTimeModal
+        show={editDeliveryTimeModalOpen}
+        onHide={() => setEditDeliveryTimeModalOpen(false)}
+        currentDeliveryTime={order?.expectedDeliveryDate}
+        onSave={handleDeliveryTimeUpdate}
+        isLoading={loading === "deliveryTime"}
       />
     </div>
   );

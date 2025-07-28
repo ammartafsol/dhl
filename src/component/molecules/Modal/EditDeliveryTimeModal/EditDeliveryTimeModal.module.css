@@ -1,0 +1,86 @@
+.modal {
+  border-radius: 50px;
+}
+
+.header {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.header h4 {
+  margin-bottom: 0;
+  text-align: left;
+  margin-left: 20px;
+  font-family: var(--plusJakartaSans);
+  font-size: 24px;
+}
+
+.header button {
+  padding: 0 !important;
+  margin: 0 !important;
+  right: 27px;
+  top: 27px;
+  opacity: 1;
+  width: 16px;
+  height: 16px;
+  background-repeat: no-repeat !important;
+  font-family: var(--plusJakartaSans);
+}
+
+.header button:hover {
+  opacity: 1;
+  box-shadow: none;
+}
+
+.body {
+  padding: 20px;
+  background-color: #fffdfd;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-weight: 600;
+  color: var(--black-color);
+  font-size: 14px;
+}
+
+.input {
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary-bg);
+  box-shadow: 0 0 0 2px rgba(239, 105, 35, 0.1);
+}
+
+.buttonContainer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.cancelButton {
+  min-width: 100px;
+}
+
+.saveButton {
+  min-width: 120px;
+} 
