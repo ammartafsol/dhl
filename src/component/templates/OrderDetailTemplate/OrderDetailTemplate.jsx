@@ -41,7 +41,8 @@ const OrderDetailTemplate = ({ slug }) => {
     message: "",
   });
   const [deliveryModalOpen, setDeliveryModalOpen] = useState(false);
-  const [editDeliveryTimeModalOpen, setEditDeliveryTimeModalOpen] = useState(false);
+  const [editDeliveryTimeModalOpen, setEditDeliveryTimeModalOpen] =
+    useState(false);
 
   // Helper function to capitalize each word
   const capitalizeWords = (str) => {
@@ -204,16 +205,16 @@ const OrderDetailTemplate = ({ slug }) => {
     setLoading("");
   };
 
-    // Handle delivery time update
+  // Handle delivery time update
   const handleDeliveryTimeUpdate = async (newDeliveryTime) => {
     setLoading("deliveryTime");
 
     try {
       const { response } = await Patch({
         route: `orders/edit/delivery/${slug}`,
-        data: { 
-          expectedDeliveryDate: newDeliveryTime.toISOString().split('T')[0], // YYYY-MM-DD format
-          expectedDeliveryTime: newDeliveryTime.toTimeString().slice(0, 5) // HH:mm format
+        data: {
+          expectedDeliveryDate: newDeliveryTime.toISOString().split("T")[0], // YYYY-MM-DD format
+          expectedDeliveryTime: newDeliveryTime.toTimeString().slice(0, 5), // HH:mm format
         },
       });
 
@@ -373,7 +374,9 @@ const OrderDetailTemplate = ({ slug }) => {
             {order?.expectedDeliveryDate && (
               <BorderWrapper className={classes.timelineSection}>
                 <div className={classes.timelineHeader}>
-                  <h6 className={classes.sectionTitle}>Expected Delivery Time</h6>
+                  <h6 className={classes.sectionTitle}>
+                    Expected Delivery Time
+                  </h6>
                 </div>
                 <div className={classes.timelineInfo}>
                   <div className={classes.timelineItem}>
@@ -390,15 +393,15 @@ const OrderDetailTemplate = ({ slug }) => {
                   </div>
                 </div>
                 {order?.status !== "delivered" && (
-                    <Button
-                      label="Edit"
-                      onClick={() => setEditDeliveryTimeModalOpen(true)}
-                      variant="outlined"
-                      size="small"
-                      className={classes.editButton}
-                      disabled={loading === "deliveryTime"}
-                    />
-                  )}
+                  <Button
+                    label="Edit"
+                    onClick={() => setEditDeliveryTimeModalOpen(true)}
+                    variant="outlined"
+                    size="small"
+                    className={classes.editButton}
+                    disabled={loading === "deliveryTime"}
+                  />
+                )}
               </BorderWrapper>
             )}
 
@@ -585,6 +588,12 @@ const OrderDetailTemplate = ({ slug }) => {
                   </div>
                 )}
 
+                {order?.loyaltyPointsUsed > 0 && (
+                  <div className={mergeClass(classes.vatDiv)}>
+                    <span>Loyalty Points Used</span>
+                    <p>-{getFormattedPrice(order?.loyaltyPointsUsed)}</p>
+                  </div>
+                )}
                 <div className={classes.finalPrice}>
                   <span>Total Amount</span>
                   <p>{getFormattedPrice(order?.totalPrice)}</p>
