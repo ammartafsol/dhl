@@ -56,7 +56,7 @@ export const mergeClass = (...classes) => {
 };
 
 export const getFormattedPrice = (price, currency = "$") => {
-  return `SAR${parseFloat(price).toFixed(2)}`;
+  return `Gyd${parseFloat(price).toFixed(2)}`;
 };
 
 export function getLastSegment(url) {

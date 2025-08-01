@@ -636,7 +636,7 @@ export const walletRefundTableHeader = [
     key: "amount",
     title: "Amount",
     style: { width: "15%" },
-    renderTextCell: (cellValue, rowItem) => `SAR ${rowItem?.amount?.toFixed(0) || 0}`,
+    renderTextCell: (cellValue, rowItem) => `Gyd ${rowItem?.amount?.toFixed(0) || 0}`,
   },
   {
     key: "refundStatus",
