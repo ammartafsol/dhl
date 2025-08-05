@@ -55,8 +55,24 @@ export const mergeClass = (...classes) => {
   return classes.join(" ");
 };
 
-export const getFormattedPrice = (price, currency = "$") => {
-  return `Gyd${parseFloat(price).toFixed(2)}`;
+export const getFormattedPrice = (price, currency = "GYD", currencyRate = 1) => {
+  const parsedPrice = parseFloat(price);
+ 
+  if (isNaN(parsedPrice)) return `${currency} 0.00`;
+ 
+  // If currency is GYD, show the actual value with commas
+  if (currency.toUpperCase() === "GYD") {
+    return `GYD ${parsedPrice.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+ 
+  // If currency is USD, convert and show with commas
+  if (currency.toUpperCase() === "USD") {
+    const convertedPrice = parsedPrice / currencyRate;
+    return `USD ${convertedPrice.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  }
+ 
+  // Default fallback
+  return `${currency.toUpperCase()} ${parsedPrice.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 };
 
 export function getLastSegment(url) {
